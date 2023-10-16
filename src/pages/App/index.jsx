@@ -7,27 +7,26 @@ import { MyOrder } from '../MyOrder'
 import { MyOrders } from '../MyOrders'
 import { NotFound } from '../NotFound'
 import { Navbar } from '../../components/Navbar'
+import { Layout } from '../../components/Layout'
 import './App.css'
 
-const AppRoutes = () => {
-  let routes = useRoutes([
-    { path: '/', element: <Home /> },
-    { path: '/my-account', element: <MyAccount /> },
-    { path: '/sign-in', element: <SignIn /> },
-    { path: '/my-order', element: <MyOrder /> },
-    { path: '/my-orders', element: <MyOrders /> },
-    { path: '*', element: <NotFound /> }
-  ])
-
-  return routes
-}
+const AppRoutes = () => useRoutes([
+  { path: '/', element: <Home /> },
+  { path: '/my-account', element: <MyAccount /> },
+  { path: '/sign-in', element: <SignIn /> },
+  { path: '/my-order', element: <MyOrder /> },
+  { path: '/my-orders', element: <MyOrders /> },
+  { path: '*', element: <NotFound /> }
+]);
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
-        <AppRoutes />
         <Navbar />
+        <Layout>
+          <AppRoutes />
+        </Layout>
       </BrowserRouter>
     </>
   )
