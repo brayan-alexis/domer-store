@@ -13,11 +13,11 @@ const starRating = (rating) => {
   
   for (let i = 0; i < 5; i++) {
     if (rating >= 0.95) {
-      stars.push(<BsStarFill className="w-4 h-4 text-yellow-300" />);
+      stars.push(<BsStarFill key={i} className="w-4 h-4 text-yellow-300" />);
     } else if (rating >= 0.5) {
-      stars.push(<BsStarHalf className="w-4 h-4 text-yellow-300" />);
+      stars.push(<BsStarHalf key={i}  className="w-4 h-4 text-yellow-300" />);
     } else {
-      stars.push(<BsStar className="w-4 h-4 text-yellow-300" />);
+      stars.push(<BsStar key={i}  className="w-4 h-4 text-yellow-300" />);
     }
     rating--;
   }

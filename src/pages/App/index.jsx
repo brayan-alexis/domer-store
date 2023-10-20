@@ -1,5 +1,6 @@
 // import viteLogo from '/vite.svg'
 import { useRoutes, BrowserRouter } from 'react-router-dom'
+import { ShoppingCartProvider } from '../../context'
 import { Home } from '../Home'
 import { MyAccount } from '../MyAccount'
 import { SignIn } from '../SignIn'
@@ -21,15 +22,15 @@ const AppRoutes = () => useRoutes([
 
 const App = () => {
   return (
-    <>
+    <ShoppingCartProvider>
       <BrowserRouter>
         <Navbar />
         <Layout>
           <AppRoutes />
         </Layout>
       </BrowserRouter>
-    </>
-  )
-}
+    </ShoppingCartProvider>
+  );
+};
 
 export default App
