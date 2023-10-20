@@ -22,7 +22,7 @@ const Navbar = () => {
   const textDecoration = 'text-green-600'
 
   return (
-    <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light">
+    <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-white">
       <ul className="flex items-center gap-3">
         {leftNavbar.map((item, index) => (
           <li key={item.text} className={item.className}>
