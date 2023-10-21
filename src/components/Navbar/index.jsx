@@ -1,6 +1,14 @@
+// import { useContext } from "react";
+// import { ShoppingCartContext } from "../../context";
+import { useShoppingCartContext } from "../../context";
 import { NavLink } from "react-router-dom";
+import { BsCart2 } from "react-icons/bs";
+
 
 const Navbar = () => {
+  const { productsInCart } = useShoppingCartContext();
+  const textDecoration = 'text-green-600'
+
   let leftNavbar = [
     { to: '/', text: 'Home', className: 'font-semibold text-lg' },
     { to: '/', text: 'All' },
@@ -16,10 +24,7 @@ const Navbar = () => {
     { to: '/sign-in', text: 'Sign In' },
     { to: '/my-order', text: 'My Order 📄' },
     { to: '/my-orders', text: 'My orders 📦' },
-    { to: '', text: '🛒0' }
   ]
-
-  const textDecoration = 'text-green-600'
 
   return (
     <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-white">
@@ -54,6 +59,14 @@ const Navbar = () => {
             )}
           </li>
         ))}
+        <li className="relative">
+          <button className="flex gap-1">
+            <BsCart2 className="w-5 h-5" />
+            <span className="flex justify-center items-center absolute -top-2 -right-2 h-4 w-4 rounded-full text-xs font-semibold bg-green-500">
+              {productsInCart}
+            </span>
+          </button>
+        </li>
       </ul>
     </nav>
   );
