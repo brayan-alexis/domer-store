@@ -1,6 +1,6 @@
 import { useProductDetailContext } from "../../context";
 import { BsCart2 } from "react-icons/bs";
-import { GrClose } from "react-icons/gr";
+import { IoClose } from "react-icons/io5";
 import { BsStarFill } from "react-icons/bs";
 import { BsStarHalf } from "react-icons/bs";
 import { BsStar } from "react-icons/bs";
@@ -29,19 +29,15 @@ const starRating = (rating) => {
 export const ProductDetail = () => {
   const { setOpenModal, showProduct } = useProductDetailContext();
 
-  // const handleCloseModal = () => {
-  //   setOpenModal(state => !state);
-  // }
-
   const onCancel = () => { setOpenModal(false) };
 
   return (
     <div className='flex flex-row fixed bg-white rounded-lg w-[988px] h-[calc(100vh-140px)] max-h-[80vh] p-10 overflow-hidden shadow-lg'>
       <div 
-        className='absolute top-0 right-0 flex justify-center items-center bg-[#2f323a9d] w-6 h-6 rounded-full m-4 p-1 font-bold cursor-pointer'
+        className='absolute top-0 right-0 flex justify-center items-center hover:bg-gray-200 rounded-full m-4 p-1 font-bold cursor-pointer'
         onClick={onCancel}
       >
-        <GrClose className='h-6 w-6 text-white'></GrClose>
+        <IoClose className='h-6 w-6'></IoClose>
       </div>
 
       <div className='flex flex-col w-1/6 h-full px-4'>
@@ -65,19 +61,6 @@ export const ProductDetail = () => {
         <p className='absolute top-0 left-0 bg-white/80 rounded-lg text-xs m-2 px-2 py-0.5 shadow-sm hover:bg-white'>
           {showProduct.category}
         </p>
-        {/* <div class="absolute -bottom-10 left-0 inline-block py-1 text-xs">
-          <div class="absolute inset-0 text-green-200 flex">
-            <svg height="100%" viewBox="0 0 50 100">
-              <path
-                d="M49.9,0a17.1,17.1,0,0,0-12,5L5,37.9A17,17,0,0,0,5,62L37.9,94.9a17.1,17.1,0,0,0,12,5ZM25.4,59.4a9.5,9.5,0,1,1,9.5-9.5A9.5,9.5,0,0,1,25.4,59.4Z"
-                fill="currentColor" />
-            </svg>
-            <div class="flex-grow h-full -ml-px bg-green-200 rounded-md rounded-l-none"></div>
-          </div>
-          <span className="relative text-green-500 uppercase font-semibold pr-px">
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>{showProduct.brand}<span>&nbsp;</span>
-          </span>
-        </div> */}
       </figure> 
 
       <div className='p-5 w-2/5'>
@@ -124,7 +107,7 @@ export const ProductDetail = () => {
           </span>
         </div>
 
-        <hr className='my-3' />
+        <hr className='my-2' />
 
         <p className='mt-2 text-red-500'>
           {showProduct.stock} left in stock
