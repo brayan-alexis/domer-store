@@ -1,6 +1,5 @@
-// import { useContext } from "react";
-// import { ShoppingCartContext } from "../../context";
 import { useShoppingCartContext } from "../../context";
+import { useProductDetailContext } from "../../context";
 import { BsCart2 } from "react-icons/bs";
 import { BsStarFill } from "react-icons/bs";
 import { BsStarHalf } from "react-icons/bs";
@@ -27,11 +26,19 @@ const starRating = (rating) => {
   return stars;
 }
 
-export const Card = ({ category, images, title, rating, price, discountPercentage }) => {
-  const { addToCart } = useShoppingCartContext();
+export const Card = ({ category, images, title, rating, price, discountPercentage, description, stock, brand }) => {
+  const { addToCart,  } = useShoppingCartContext();
+  const { setOpenModal, setShowProduct } = useProductDetailContext();
+
+  const handleShowProduct = (productDetail) => {
+    setOpenModal(state => !state);
+    setShowProduct(productDetail);
+  }
   
   return (
-    <div className="card bg-white cursor-pointer w-56 h-72 rounded-lg shadow-md hover:shadow-lg">
+    <div className="card bg-white cursor-pointer w-56 h-72 rounded-lg shadow-md hover:shadow-lg"
+      onClick={() => handleShowProduct({ category, images, title, rating, price, discountPercentage, description, stock, brand })}
+    >
       <figure className="card__image relative mb-2 w-full h-4/6">
         <span className="absolute top-0 left-0 bg-white/80 rounded-lg text-xs m-2 px-2 py-0.5 shadow-sm hover:bg-white">
           {category}

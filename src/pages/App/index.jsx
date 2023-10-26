@@ -1,4 +1,3 @@
-// import viteLogo from '/vite.svg'
 import { useRoutes, BrowserRouter } from 'react-router-dom'
 import { ShoppingCartProvider } from '../../context'
 import { Home } from '../Home'

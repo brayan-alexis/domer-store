@@ -1,5 +1,3 @@
-// import { useContext } from "react";
-// import { ShoppingCartContext } from "../../context";
 import { useShoppingCartContext } from "../../context";
 import { NavLink } from "react-router-dom";
 import { BsCart2 } from "react-icons/bs";
