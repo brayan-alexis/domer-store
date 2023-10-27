@@ -1,4 +1,5 @@
 import { useProductDetailContext } from "../../context";
+import { useShoppingCartContext } from "../../context";
 import { BsCart2 } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 import { BsStarFill } from "react-icons/bs";
@@ -27,9 +28,10 @@ const starRating = (rating) => {
 }
 
 export const ProductDetail = () => {
-  const { setOpenModal, showProduct } = useProductDetailContext();
+  const { showProduct, toggleModal } = useProductDetailContext();
+  const { addToCart } = useShoppingCartContext();
 
-  const onCancel = () => { setOpenModal(false) };
+  const onCancel = () => toggleModal();
 
   return (
     <div className='flex flex-row fixed bg-white rounded-lg w-[988px] h-[calc(100vh-140px)] max-h-[80vh] p-10 overflow-hidden shadow-lg'>
@@ -84,8 +86,6 @@ export const ProductDetail = () => {
             {showProduct.discountPercentage}% off
           </span>
         </div>
-
-        {console.log(showProduct) }
         
         <p className='mt-3 text-base font-semibold'>
           About this item:
@@ -114,7 +114,10 @@ export const ProductDetail = () => {
         </p>
 
         <div className='flex flex-row mt-5'>
-          <button className='flex justify-center items-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full'>
+          <button 
+            className='flex justify-center items-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full'
+            onClick={addToCart}
+          >
             Add to Cart <BsCart2 className='ml-2' />
           </button>
           <button className='bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full ml-5'>

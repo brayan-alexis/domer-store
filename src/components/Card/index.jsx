@@ -1,5 +1,5 @@
-import { useShoppingCartContext } from "../../context";
 import { useProductDetailContext } from "../../context";
+import { useShoppingCartContext } from "../../context";
 import { BsCart2 } from "react-icons/bs";
 import { BsStarFill } from "react-icons/bs";
 import { BsStarHalf } from "react-icons/bs";
@@ -27,12 +27,12 @@ const starRating = (rating) => {
 }
 
 export const Card = ({ category, images, title, rating, price, discountPercentage, description, stock, brand }) => {
-  const { addToCart,  } = useShoppingCartContext();
-  const { setOpenModal, setShowProduct } = useProductDetailContext();
+  const { setShowProduct, toggleModal } = useProductDetailContext();
+  const { addToCart } = useShoppingCartContext();
 
   const handleShowProduct = (productDetail) => {
-    setOpenModal(state => !state);
     setShowProduct(productDetail);
+    toggleModal();
   }
   
   return (

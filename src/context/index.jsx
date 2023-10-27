@@ -20,10 +20,10 @@ export const ShoppingCartProvider = ({ children }) => {
   return (
     <context.Provider value={{
       productsInCart,
-      setProductsInCart,
       addToCart,
       openModal,
       setOpenModal,
+      toggleModal,
       showProduct,
       setShowProduct
     }}>
