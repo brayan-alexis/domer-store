@@ -4,8 +4,7 @@ import { BsStarHalf } from "react-icons/bs";
 import { BsStar } from "react-icons/bs";
 
 const context = createContext();
-export const useShoppingCartContext = () => useContext(context);
-export const useProductDetailContext = () => useContext(context);
+export const useGlobalContext = () => useContext(context);
 
 export const ShoppingCartProvider = ({ children }) => {
   // Shopping cart - add to cart

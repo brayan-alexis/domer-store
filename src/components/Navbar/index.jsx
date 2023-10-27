@@ -1,10 +1,10 @@
-import { useShoppingCartContext } from "../../context";
+import { useGlobalContext } from "../../context";
 import { NavLink } from "react-router-dom";
 import { BsCart2 } from "react-icons/bs";
 
 
 const Navbar = () => {
-  const { productsInCart } = useShoppingCartContext();
+  const { productsInCart } = useGlobalContext();
   const textDecoration = 'text-green-600'
 
   let leftNavbar = [

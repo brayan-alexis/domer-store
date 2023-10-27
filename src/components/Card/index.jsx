@@ -1,5 +1,4 @@
-import { useProductDetailContext } from "../../context";
-import { useShoppingCartContext } from "../../context";
+import { useGlobalContext } from "../../context";
 import { BsCart2 } from "react-icons/bs";
 
 const discountedPrice = (price, discountPercentage) => {
@@ -8,8 +7,7 @@ const discountedPrice = (price, discountPercentage) => {
 }
 
 export const Card = ({ category, images, title, rating, price, discountPercentage, description, stock, brand }) => {
-  const { setShowProduct, toggleModal } = useProductDetailContext();
-  const { addToCart, starRating } = useShoppingCartContext();
+  const { addToCart, starRating, setShowProduct, toggleModal } = useGlobalContext();
 
   const handleShowProduct = (productDetail) => {
     setShowProduct(productDetail);

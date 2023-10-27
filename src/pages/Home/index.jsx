@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
-import { useShoppingCartContext } from "../../context";
-import { useProductDetailContext } from "../../context";
+import { useGlobalContext } from "../../context";
 import { dummyjsonURL } from "../../api/index";
 import { Card } from "../../components/Card";
 import { ProductDetail } from "../../components/ProductDetail";
 import { ProductModal } from "../../components/ProductModal";
 
 const Home = () => {
-  const { openModal } = useProductDetailContext();
   const [products, setProducts] = useState(null);
+  const { openModal } = useGlobalContext();
 
   useEffect(() => {
     const fetchProducts = async () => {
