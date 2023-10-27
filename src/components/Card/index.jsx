@@ -1,34 +1,15 @@
 import { useProductDetailContext } from "../../context";
 import { useShoppingCartContext } from "../../context";
 import { BsCart2 } from "react-icons/bs";
-import { BsStarFill } from "react-icons/bs";
-import { BsStarHalf } from "react-icons/bs";
-import { BsStar } from "react-icons/bs";
 
 const discountedPrice = (price, discountPercentage) => {
   let discount = price * (discountPercentage/100);
   return (price - discount).toFixed(2);
 }
 
-const starRating = (rating) => {
-  let stars = [];
-  
-  for (let i = 0; i < 5; i++) {
-    if (rating >= 0.95) {
-      stars.push(<BsStarFill key={i} className="w-4 h-4 text-yellow-300" />);
-    } else if (rating >= 0.5) {
-      stars.push(<BsStarHalf key={i}  className="w-4 h-4 text-yellow-300" />);
-    } else {
-      stars.push(<BsStar key={i}  className="w-4 h-4 text-yellow-300" />);
-    }
-    rating--;
-  }
-  return stars;
-}
-
 export const Card = ({ category, images, title, rating, price, discountPercentage, description, stock, brand }) => {
   const { setShowProduct, toggleModal } = useProductDetailContext();
-  const { addToCart } = useShoppingCartContext();
+  const { addToCart, starRating } = useShoppingCartContext();
 
   const handleShowProduct = (productDetail) => {
     setShowProduct(productDetail);
