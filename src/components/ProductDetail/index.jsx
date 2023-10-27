@@ -2,13 +2,8 @@ import { useGlobalContext } from "../../context";
 import { BsCart2 } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 
-const discountedPrice = (price, discountPercentage) => {
-  let discount = price * (discountPercentage/100);
-  return (price - discount).toFixed(2);
-}
-
 export const ProductDetail = () => {
-  const { addToCart, starRating, showProduct, toggleModal } = useGlobalContext();
+  const { addToCart, starRating, discountedPrice, showProduct, toggleModal } = useGlobalContext();
 
   const onCancel = () => toggleModal();
 

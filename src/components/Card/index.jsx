@@ -1,13 +1,8 @@
 import { useGlobalContext } from "../../context";
 import { BsCart2 } from "react-icons/bs";
 
-const discountedPrice = (price, discountPercentage) => {
-  let discount = price * (discountPercentage/100);
-  return (price - discount).toFixed(2);
-}
-
 export const Card = ({ category, images, title, rating, price, discountPercentage, description, stock, brand }) => {
-  const { addToCart, starRating, setShowProduct, toggleModal } = useGlobalContext();
+  const { addToCart, starRating, discountedPrice, setShowProduct, toggleModal } = useGlobalContext();
 
   const handleShowProduct = (productDetail) => {
     setShowProduct(productDetail);
