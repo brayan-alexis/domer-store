@@ -5,10 +5,12 @@ export const useShoppingCartContext = () => useContext(context);
 export const useProductDetailContext = () => useContext(context);
 
 export const ShoppingCartProvider = ({ children }) => {
-  // Products in cart counter
+  // Shopping cart - add to cart
   const [productsInCart, setProductsInCart] = useState(0);
-  // Product detail modal
+  // Product detail - toggle modal
   const [openModal, setOpenModal] = useState(false);
+  const toggleModal = () => setOpenModal(!openModal);
+  // Product detail - show product
   const [showProduct, setShowProduct] = useState({});
 
   const addToCart = () => {

@@ -107,7 +107,7 @@ export const ProductDetail = () => {
           </span>
         </div>
 
-        <hr className='my-2' />
+        <hr className='my-4' />
 
         <p className='mt-2 text-red-500'>
           {showProduct.stock} left in stock
