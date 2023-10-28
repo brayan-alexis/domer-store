@@ -18,7 +18,10 @@ export const ProductDetail = () => {
 
       <div className='flex flex-col w-1/6 h-full px-4'>
         {showProduct.images.map((image, index) => (
-          <figure className='flex justify-center items-center relative mb-2 w-full h-1/5'>
+          <figure 
+            key={index}
+            className='flex justify-center items-center relative mb-2 w-full h-1/5'
+          >
             <img 
               className='w-auto h-full object-cover rounded-lg' 
               src={image} 
@@ -67,14 +70,14 @@ export const ProductDetail = () => {
         <p className='text-base font-light'>
           {showProduct.description}
         </p>
-        <div class="relative inline-block my-2 py-1 text-xs">
-          <div class="absolute inset-0 text-blue-100 dark:text-blue-200 flex">
+        <div className="relative inline-block my-2 py-1 text-xs">
+          <div className="absolute inset-0 text-blue-100 dark:text-blue-200 flex">
             <svg height="100%" viewBox="0 0 50 100">
               <path
                 d="M49.9,0a17.1,17.1,0,0,0-12,5L5,37.9A17,17,0,0,0,5,62L37.9,94.9a17.1,17.1,0,0,0,12,5ZM25.4,59.4a9.5,9.5,0,1,1,9.5-9.5A9.5,9.5,0,0,1,25.4,59.4Z"
                 fill="currentColor" />
             </svg>
-            <div class="flex-grow h-full -ml-px bg-blue-100 dark:bg-blue-200 rounded-md rounded-l-none"></div>
+            <div className="flex-grow h-full -ml-px bg-blue-100 dark:bg-blue-200 rounded-md rounded-l-none"></div>
           </div>
           <span className="relative text-blue-800 dark:text-blue-800 uppercase font-semibold pr-px">
             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>{showProduct.brand}<span>&nbsp;</span>
@@ -90,7 +93,7 @@ export const ProductDetail = () => {
         <div className='flex flex-row mt-5'>
           <button 
             className='flex justify-center items-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full'
-            onClick={addToCart}
+            onClick={() => addToCart(showProduct)}
           >
             Add to Cart <BsCart2 className='ml-2' />
           </button>

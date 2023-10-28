@@ -28,21 +28,25 @@ const discountedPrice = (price, discountPercentage) => {
 }
 
 export const GlobalContextProvider = ({ children }) => {
-  // Shopping cart - add to cart
-  const [productsInCart, setProductsInCart] = useState(0);
-  // Product detail - toggle modal
+  // Shopping cart - Cart count
+  const [cartCount, setCartCount] = useState(0);
+  // Shopping cart - Cart products
+  const [cartProducts, setCartProducts] = useState([]);
+  // Product detail - Modal
   const [openModal, setOpenModal] = useState(false);
-  const toggleModal = () => setOpenModal(!openModal);
-  // Product detail - show product
+  // Product detail - Show product
   const [showProduct, setShowProduct] = useState({});
 
-  const addToCart = () => {
-    setProductsInCart(productsInCart + 1);
+  const toggleModal = () => setOpenModal(!openModal);
+
+  const addToCart = (productData) => {
+    setCartCount(cartCount + 1);
+    setCartProducts([...cartProducts, productData]);
   }
 
   return (
     <context.Provider value={{
-      productsInCart,
+      productsInCart: cartCount,
       addToCart,
       starRating,
       discountedPrice,

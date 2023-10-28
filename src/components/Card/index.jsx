@@ -23,9 +23,12 @@ export const Card = ({ category, images, title, rating, price, discountPercentag
         />
         <button
           className="absolute top-0 right-0 flex justify-center items-center bg-white w-7 h-7 rounded-lg m-2 p-1 shadow-sm hover:bg-green-500 hover:fill-white"
-          onClick={(e) => { e.stopPropagation(); addToCart(); }}
+          onClick={(e) => { 
+            e.stopPropagation(); 
+            addToCart({ category, images, title, rating, price, discountPercentage, description, stock, brand }); 
+          }}
         >
-          <BsCart2 className="w-5 h-5" onClick={ addToCart } />
+          <BsCart2 className="w-5 h-5" />
         </button>
       </figure>
 
