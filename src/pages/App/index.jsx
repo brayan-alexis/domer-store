@@ -8,6 +8,7 @@ import { MyOrders } from '../MyOrders'
 import { NotFound } from '../NotFound'
 import { Navbar } from '../../components/Navbar'
 import { Layout } from '../../components/Layout'
+import { Notification } from '../../components/Notification'
 import './App.css'
 
 const AppRoutes = () => useRoutes([
@@ -27,6 +28,7 @@ const App = () => {
         <Layout>
           <AppRoutes />
         </Layout>
+        <Notification />
       </BrowserRouter>
     </GlobalContextProvider>
   );

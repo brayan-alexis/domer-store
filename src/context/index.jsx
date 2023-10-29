@@ -32,16 +32,26 @@ export const GlobalContextProvider = ({ children }) => {
   const [cartCount, setCartCount] = useState(0);
   // Shopping cart - Cart products
   const [cartProducts, setCartProducts] = useState([]);
+  // Shopping cart - Notification
+  const [openNotification, setOpenNotification] = useState(false);
   // Product detail - Modal
   const [openModal, setOpenModal] = useState(false);
   // Product detail - Show product
   const [showProduct, setShowProduct] = useState({});
 
+  const showNotification = () => {
+    setOpenNotification(true);
+    setTimeout(() => {
+      setOpenNotification(false);
+    }, 3000);
+  }
   const toggleModal = () => setOpenModal(!openModal);
 
   const addToCart = (productData) => {
     setCartCount(cartCount + 1);
     setCartProducts([...cartProducts, productData]);
+    console.log(cartProducts);
+    showNotification();
   }
 
   return (
@@ -50,6 +60,7 @@ export const GlobalContextProvider = ({ children }) => {
       addToCart,
       starRating,
       discountedPrice,
+      openNotification,
       openModal,
       setOpenModal,
       toggleModal,

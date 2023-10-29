@@ -8,7 +8,7 @@ export const ProductDetail = () => {
   const onCancel = () => toggleModal();
 
   return (
-    <div className='flex flex-row fixed bg-white rounded-lg w-[988px] h-[calc(100vh-140px)] max-h-[80vh] p-10 overflow-hidden shadow-lg'>
+    <div className='flex flex-row fixed bg-white rounded-lg w-[988px] h-[calc(100vh-140px)] max-h-[70vh] p-10 overflow-hidden shadow-lg'>
       <div 
         className='absolute top-0 right-0 flex justify-center items-center hover:bg-gray-200 rounded-full m-4 p-1 font-bold cursor-pointer'
         onClick={onCancel}
@@ -92,12 +92,12 @@ export const ProductDetail = () => {
 
         <div className='flex flex-row mt-5'>
           <button 
-            className='flex justify-center items-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full'
+            className='flex justify-center items-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full'
             onClick={() => addToCart(showProduct)}
           >
             Add to Cart <BsCart2 className='ml-2' />
           </button>
-          <button className='bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full ml-5'>
+          <button className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full ml-5'>
             Buy Now
           </button>
         </div>
