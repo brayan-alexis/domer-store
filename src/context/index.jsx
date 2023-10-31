@@ -28,15 +28,17 @@ const discountedPrice = (price, discountPercentage) => {
 }
 
 export const GlobalContextProvider = ({ children }) => {
-  // Shopping cart - Cart count
+  // Shopping cart - Cart count (number of products in cart icon)
   const [cartCount, setCartCount] = useState(0);
   // Shopping cart - Cart products
   const [cartProducts, setCartProducts] = useState([]);
-  // Shopping cart - Notification
+  // Shopping cart - Notification when product is added to cart
   const [openNotification, setOpenNotification] = useState(false);
-  // Product detail - Modal
+  // Shopping cart - Products in shopping cart menu
+  const [openCartMenu, setOpenCartMenu] = useState(false);
+  // Product detail - Modal open/close
   const [openModal, setOpenModal] = useState(false);
-  // Product detail - Show product
+  // Product detail - Show product detail
   const [showProduct, setShowProduct] = useState({});
 
   const showNotification = () => {
@@ -45,6 +47,7 @@ export const GlobalContextProvider = ({ children }) => {
       setOpenNotification(false);
     }, 3000);
   }
+  const showCartMenu = () => setOpenCartMenu(!openCartMenu);
   const toggleModal = () => setOpenModal(!openModal);
 
   const addToCart = (productData) => {
@@ -56,13 +59,15 @@ export const GlobalContextProvider = ({ children }) => {
 
   return (
     <context.Provider value={{
-      productsInCart: cartCount,
+      cartCount,
+      cartProducts,
       addToCart,
       starRating,
       discountedPrice,
       openNotification,
+      openCartMenu,
       openModal,
-      setOpenModal,
+      showCartMenu,
       toggleModal,
       showProduct,
       setShowProduct
