@@ -3,7 +3,7 @@ import { AiOutlineMinus } from "react-icons/ai";
 
 function CardShoppingCart({ title, category, price, images }) {
   return (
-    <div className="my-4">
+    <div className="my-2 mr-2">
       <div className="flex justify-between items-center">
         <div className="flex gap-2 items-center">
           <img
@@ -30,7 +30,7 @@ function CardShoppingCart({ title, category, price, images }) {
           </div>
         </div>
       </div>
-      <hr className="my-2" />
+      <hr className="my-4" />
     </div>
   )
 }

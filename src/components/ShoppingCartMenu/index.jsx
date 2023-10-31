@@ -19,9 +19,11 @@ function ShoppingCartMenu() {
         />
       </div>
 
-      {cartProducts?.map((product) => (
-        <CardShoppingCart key={product.id} {...product} />
-      ))}
+      <div className="scrollbar overflow-y-auto max-h-[400px] my-4">
+        {cartProducts?.map((product) => (
+          <CardShoppingCart key={product.id} {...product} />
+        ))}
+      </div>
 
       <div className="my-order-content">
         <div className="bg-gray-100 p-4 rounded">
@@ -33,7 +35,7 @@ function ShoppingCartMenu() {
           </div>
         </div>
 
-        <button className="bg-green-600 text-white font-bold w-full mt-4 p-2 rounded">
+        <button className="bg-green-600 hover:bg-green-700 text-white font-bold w-full mt-4 p-2 rounded">
           Checkout
         </button>
       </div>
