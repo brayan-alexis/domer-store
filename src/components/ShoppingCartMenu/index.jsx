@@ -1,7 +1,6 @@
 import { useGlobalContext } from "../../context";
+import { CardShoppingCart } from "../CardShoppingCart";
 import { IoClose } from "react-icons/io5";
-import { AiOutlinePlus } from "react-icons/ai";
-import { AiOutlineMinus } from "react-icons/ai";
 
 function ShoppingCartMenu() {
   const { cartProducts, showCartMenu, openCartMenu } = useGlobalContext();
@@ -19,6 +18,10 @@ function ShoppingCartMenu() {
           onClick={showCartMenu}
         />
       </div>
+
+      {cartProducts?.map((product) => (
+        <CardShoppingCart key={product.id} {...product} />
+      ))}
 
       <div className="my-order-content">
         <div className="bg-gray-100 p-4 rounded">
