@@ -3,7 +3,7 @@ import { CardShoppingCart } from "../CardShoppingCart";
 import { IoClose } from "react-icons/io5";
 
 function ShoppingCartMenu() {
-  const { cartProducts, showCartMenu, openCartMenu } = useGlobalContext();
+  const { cartProducts, toggleCartMenu, openCartMenu } = useGlobalContext();
 
   return (
     <aside
@@ -15,7 +15,7 @@ function ShoppingCartMenu() {
         <h1 className="text-xl font-semibold">Shopping Cart</h1>
         <IoClose
           className="absolute right-0 mr-6 w-6 h-6 cursor-pointer "
-          onClick={showCartMenu}
+          onClick={toggleCartMenu}
         />
       </div>
 

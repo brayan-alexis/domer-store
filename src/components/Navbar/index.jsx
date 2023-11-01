@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { BsCart2 } from "react-icons/bs";
 
 const Navbar = () => {
-  const { cartCount, showCartMenu } = useGlobalContext();
+  const { cartCount, toggleCartMenu } = useGlobalContext();
   const textDecoration = "text-green-600";
 
   let leftNavbar = [
@@ -57,7 +57,7 @@ const Navbar = () => {
           </li>
         ))}
         <li className="relative">
-          <button className="flex gap-1" onClick={showCartMenu}>
+          <button className="flex gap-1" onClick={toggleCartMenu}>
             <BsCart2 className="w-5 h-5" />
             <span className="flex justify-center items-center absolute -top-2 -right-2 h-4 w-4 rounded-full text-xs font-semibold bg-green-500">
               {cartCount}

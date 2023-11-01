@@ -47,13 +47,24 @@ export const GlobalContextProvider = ({ children }) => {
       setOpenNotification(false);
     }, 3000);
   }
-  const showCartMenu = () => setOpenCartMenu(!openCartMenu);
+  const toggleCartMenu = () => setOpenCartMenu(!openCartMenu);
   const toggleModal = () => setOpenModal(!openModal);
 
   const addToCart = (productData) => {
+    // Check if product already exists in cart
+    const productExists = cartProducts.some(p => p.id === productData.id);
+
+    // If product exists, increase quantity by 1. Else, add product to cart, and set quantity to 1.
+		if (productExists) {
+			const productCart = cartProducts.find(p => p.id === productData.id);
+			productCart.quantity += 1; 
+		} else {
+			productData.quantity = 1; 
+			setCartProducts([...cartProducts, productData]);
+		}
+
+    // Increase cart count by 1 and show notification
     setCartCount(cartCount + 1);
-    setCartProducts([...cartProducts, productData]);
-    console.log(cartProducts);
     showNotification();
   }
 
@@ -67,7 +78,7 @@ export const GlobalContextProvider = ({ children }) => {
       openNotification,
       openCartMenu,
       openModal,
-      showCartMenu,
+      toggleCartMenu,
       toggleModal,
       showProduct,
       setShowProduct

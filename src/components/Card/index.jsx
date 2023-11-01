@@ -1,7 +1,7 @@
 import { useGlobalContext } from "../../context";
 import { BsCart2 } from "react-icons/bs";
 
-export const Card = ({ category, images, title, rating, price, discountPercentage, description, stock, brand }) => {
+export const Card = ({ id, category, images, title, rating, price, discountPercentage, description, stock, brand }) => {
   const { addToCart, starRating, discountedPrice, setShowProduct, toggleModal } = useGlobalContext();
 
   const handleShowProduct = (productDetail) => {
@@ -11,7 +11,7 @@ export const Card = ({ category, images, title, rating, price, discountPercentag
   
   return (
     <div className="card bg-white cursor-pointer w-56 h-72 rounded-lg shadow-md hover:shadow-lg"
-      onClick={() => handleShowProduct({ category, images, title, rating, price, discountPercentage, description, stock, brand })}
+      onClick={() => handleShowProduct({ id, category, images, title, rating, price, discountPercentage, description, stock, brand })}
     >
       <figure className="card__image relative mb-2 w-full h-4/6">
         <span className="absolute top-0 left-0 bg-white/80 rounded-lg text-xs m-2 px-2 py-0.5 shadow-sm hover:bg-white">
@@ -25,7 +25,7 @@ export const Card = ({ category, images, title, rating, price, discountPercentag
           className="absolute top-0 right-0 flex justify-center items-center bg-white w-7 h-7 rounded-lg m-2 p-1 shadow-sm hover:bg-green-500 hover:fill-white"
           onClick={(e) => { 
             e.stopPropagation(); 
-            addToCart({ category, images, title, rating, price, discountPercentage, description, stock, brand }); 
+            addToCart({ id, category, images, title, rating, price, discountPercentage, description, stock, brand }); 
           }}
         >
           <BsCart2 className="w-5 h-5" />
