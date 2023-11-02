@@ -20,23 +20,30 @@ const starRating = (rating) => {
     rating--;
   }
   return stars;
-}
+};
 
 const discountedPrice = (price, discountPercentage) => {
   let discount = price * (discountPercentage/100);
   return (price - discount).toFixed(2);
-}
+};
+const productTotalPrice = (quantity, price, discountPercentage) => {
+  const total = discountedPrice(price, discountPercentage) * quantity;
+  return total.toFixed(2);
+};
+
 
 export const GlobalContextProvider = ({ children }) => {
-  // Shopping cart - Cart count (number of products in cart icon)
+  // Shopping cart - Quantity of product added to cart
   const [cartCount, setCartCount] = useState(0);
-  // Shopping cart - Cart products
+  // Shopping cart - Array of products added to cart
   const [cartProducts, setCartProducts] = useState([]);
+  // Shopping cart - Quantity of product added to cart
+  // const [cartProductQuantity, setCartProductQuantity] = useState(1);
   // Shopping cart - Notification when product is added to cart
   const [openNotification, setOpenNotification] = useState(false);
-  // Shopping cart - Products in shopping cart menu
+  // Shopping cart - Open/close shopping cart menu
   const [openCartMenu, setOpenCartMenu] = useState(false);
-  // Product detail - Modal open/close
+  // Product detail - Open/close product detail modal
   const [openModal, setOpenModal] = useState(false);
   // Product detail - Show product detail
   const [showProduct, setShowProduct] = useState({});
@@ -68,6 +75,23 @@ export const GlobalContextProvider = ({ children }) => {
     showNotification();
   }
 
+  const decrementQuantity = (productData) => {
+    const productCart = cartProducts.find(p => p.id === productData.id);
+    console.log(productCart)
+
+    if (productCart.quantity > 1) {
+      productCart.quantity -= 1;
+      setCartCount(cartCount - 1);
+    }
+  }
+  
+  const incrementQuantity = (productData) => {
+    const productCart = cartProducts.find(p => p.id === productData.id);
+    console.log(productCart)
+    productCart.quantity += 1;
+    setCartCount(cartCount + 1);
+  }
+
   return (
     <context.Provider value={{
       cartCount,
@@ -75,6 +99,9 @@ export const GlobalContextProvider = ({ children }) => {
       addToCart,
       starRating,
       discountedPrice,
+      productTotalPrice,
+      decrementQuantity,
+      incrementQuantity,
       openNotification,
       openCartMenu,
       openModal,
