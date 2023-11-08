@@ -49,7 +49,7 @@ function CardShoppingCart({ id, title, price, category, images, discountPercenta
               <AiOutlinePlus />
             </button>
             <button
-              onClick= {() => handleDeleteProduct(id)}
+              onClick= {() => handleDeleteProduct(id, quantity)}
             >
               <AiFillDelete className="text-gray-400 hover:text-red-500"  />
             </button>

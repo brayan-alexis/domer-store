@@ -92,10 +92,10 @@ export const GlobalContextProvider = ({ children }) => {
     setCartCount(cartCount + 1);
   }
 
-  const handleDeleteProduct = (id) => {
+  const handleDeleteProduct = (id, quantity) => {
     const filteredProducts = cartProducts.filter((product) => product.id !== id);
     setCartProducts(filteredProducts);
-    setCartCount(cartCount - 1);
+    setCartCount(cartCount - quantity);
   }
 
   return (
