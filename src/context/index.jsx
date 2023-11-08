@@ -37,8 +37,6 @@ export const GlobalContextProvider = ({ children }) => {
   const [cartCount, setCartCount] = useState(0);
   // Shopping cart - Array of products added to cart
   const [cartProducts, setCartProducts] = useState([]);
-  // Shopping cart - Quantity of product added to cart
-  // const [cartProductQuantity, setCartProductQuantity] = useState(1);
   // Shopping cart - Notification when product is added to cart
   const [openNotification, setOpenNotification] = useState(false);
   // Shopping cart - Open/close shopping cart menu
@@ -82,6 +80,8 @@ export const GlobalContextProvider = ({ children }) => {
     if (productCart.quantity > 1) {
       productCart.quantity -= 1;
       setCartCount(cartCount - 1);
+    } else {
+      handleDeleteProduct(productData.id);
     }
   }
   
@@ -92,14 +92,22 @@ export const GlobalContextProvider = ({ children }) => {
     setCartCount(cartCount + 1);
   }
 
+  const handleDeleteProduct = (id) => {
+    const filteredProducts = cartProducts.filter((product) => product.id !== id);
+    setCartProducts(filteredProducts);
+    setCartCount(cartCount - 1);
+  }
+
   return (
     <context.Provider value={{
       cartCount,
       cartProducts,
+      setCartProducts,
       addToCart,
       starRating,
       discountedPrice,
       productTotalPrice,
+      handleDeleteProduct,
       decrementQuantity,
       incrementQuantity,
       openNotification,

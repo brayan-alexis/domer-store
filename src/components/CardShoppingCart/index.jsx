@@ -1,8 +1,8 @@
-import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useGlobalContext } from "../../context";
 import { AiOutlinePlus } from "react-icons/ai";
 import { AiOutlineMinus } from "react-icons/ai";
+import { AiFillDelete } from "react-icons/ai";
 
 function CardShoppingCart({ id, title, price, category, images, discountPercentage, quantity }) {
   CardShoppingCart.propTypes = {
@@ -13,7 +13,7 @@ function CardShoppingCart({ id, title, price, category, images, discountPercenta
     quantity: PropTypes.number.isRequired,
 	};
 
-  const { cartProductQuantity, productTotalPrice, decrementQuantity, incrementQuantity } = useGlobalContext();
+  const { productTotalPrice, decrementQuantity, incrementQuantity, handleDeleteProduct } = useGlobalContext();
 
   return (
     <div className="my-2 mr-2">
@@ -47,6 +47,11 @@ function CardShoppingCart({ id, title, price, category, images, discountPercenta
               onClick={() => incrementQuantity({ id, title, price, category, images, discountPercentage, quantity })}
             >
               <AiOutlinePlus />
+            </button>
+            <button
+              onClick= {() => handleDeleteProduct(id)}
+            >
+              <AiFillDelete className="text-gray-400 hover:text-red-500"  />
             </button>
           </div>
         </div>
