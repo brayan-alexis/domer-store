@@ -1,5 +1,6 @@
 import { useGlobalContext } from "../../context";
 import { CardShoppingCart } from "../CardShoppingCart";
+import { totalPrice } from "../../utils";
 import { IoClose } from "react-icons/io5";
 
 function ShoppingCartMenu() {
@@ -31,7 +32,7 @@ function ShoppingCartMenu() {
             <p className="font-semibold">
               <span>Total</span>
             </p>
-            <p className="font-bold">$0.00</p>
+            <p className="font-bold">${totalPrice(cartProducts)}</p>
           </div>
         </div>
 
