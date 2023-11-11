@@ -33,6 +33,8 @@ const productTotalPrice = (quantity, price, discountPercentage) => {
 
 
 export const GlobalContextProvider = ({ children }) => {
+  // Order -
+  const [order, setOrder] = useState([]);
   // Shopping cart - Quantity of product added to cart
   const [cartCount, setCartCount] = useState(0);
   // Shopping cart - Array of products added to cart
@@ -81,7 +83,7 @@ export const GlobalContextProvider = ({ children }) => {
       productCart.quantity -= 1;
       setCartCount(cartCount - 1);
     } else {
-      handleDeleteProduct(productData.id);
+      handleDeleteProduct(productData.id, productData.quantity);
     }
   }
   
@@ -100,9 +102,12 @@ export const GlobalContextProvider = ({ children }) => {
 
   return (
     <context.Provider value={{
-      cartCount,
+      order,
+      setOrder,
       cartProducts,
       setCartProducts,
+      cartCount,
+      setCartCount,
       addToCart,
       starRating,
       discountedPrice,

@@ -4,7 +4,20 @@ import { totalPrice } from "../../utils";
 import { IoClose } from "react-icons/io5";
 
 function ShoppingCartMenu() {
-  const { cartProducts, toggleCartMenu, openCartMenu } = useGlobalContext();
+  const { order, setOrder, cartProducts, setCartProducts, setCartCount, toggleCartMenu, openCartMenu } = useGlobalContext();
+  
+  const handleCheckout = () => {
+    const orderToAdd = {
+      // id: Math.random() * 100000,
+      date: new Date().toLocaleDateString(),
+      products: cartProducts,
+      totalPrice: totalPrice(cartProducts),
+    };
+
+    setOrder([...order, orderToAdd]);
+    setCartProducts([]);
+    setCartCount(0);
+  }
 
   return (
     <aside
@@ -36,7 +49,10 @@ function ShoppingCartMenu() {
           </div>
         </div>
 
-        <button className="bg-green-600 hover:bg-green-700 text-white font-bold w-full mt-4 p-2 rounded">
+        <button 
+          className="bg-green-600 hover:bg-green-700 text-white font-bold w-full mt-4 p-2 rounded"
+          onClick={handleCheckout}
+        >
           Checkout
         </button>
       </div>
