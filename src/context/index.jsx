@@ -64,9 +64,9 @@ export const GlobalContextProvider = ({ children }) => {
     // If product exists, increase quantity by 1. Else, add product to cart, and set quantity to 1.
 		if (productExists) {
 			const productCart = cartProducts.find(p => p.id === productData.id);
-			productCart.quantity += 1; 
+			productCart.quantity += 1;
 		} else {
-			productData.quantity = 1; 
+			productData.quantity = 1;
 			setCartProducts([...cartProducts, productData]);
 		}
 

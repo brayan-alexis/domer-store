@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useGlobalContext } from "../../context";
 import { CardShoppingCart } from "../CardShoppingCart";
 import { totalPrice } from "../../utils";
@@ -49,12 +50,14 @@ function ShoppingCartMenu() {
           </div>
         </div>
 
-        <button 
-          className="bg-green-600 hover:bg-green-700 text-white font-bold w-full mt-4 p-2 rounded"
-          onClick={handleCheckout}
-        >
-          Checkout
-        </button>
+        <Link to="/my-orders/last">
+          <button 
+            className="bg-green-600 hover:bg-green-700 text-white font-bold w-full mt-4 p-2 rounded"
+            onClick={handleCheckout}
+          >
+            Checkout
+          </button>
+        </Link>
       </div>
     </aside>
   );
