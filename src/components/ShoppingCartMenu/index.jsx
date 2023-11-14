@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../../context";
-import { CardShoppingCart } from "../CardShoppingCart";
+import { OrderCard } from "../OrderCard";
 import { totalPrice } from "../../utils";
 import { IoClose } from "react-icons/io5";
 
@@ -18,6 +18,7 @@ function ShoppingCartMenu() {
     setOrder([...order, orderToAdd]);
     setCartProducts([]);
     setCartCount(0);
+    toggleCartMenu();
   }
 
   return (
@@ -36,7 +37,7 @@ function ShoppingCartMenu() {
 
       <div className="scrollbar overflow-y-auto max-h-[400px] my-4">
         {cartProducts?.map((product) => (
-          <CardShoppingCart key={product.id} {...product} />
+          <OrderCard key={product.id} {...product} />
         ))}
       </div>
 

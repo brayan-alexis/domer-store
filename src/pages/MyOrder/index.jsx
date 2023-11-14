@@ -1,6 +1,5 @@
 import React from 'react';
 import { useGlobalContext } from '../../context';
-import { Layout } from '../../components/Layout';
 import { CardShoppingCart } from '../../components/CardShoppingCart';
 
 function MyOrder() {

@@ -4,7 +4,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { AiOutlineMinus } from "react-icons/ai";
 import { AiFillDelete } from "react-icons/ai";
 
-function CardShoppingCart({
+function OrderCard({
   id,
   title,
   price,
@@ -14,7 +14,7 @@ function CardShoppingCart({
   quantity,
   editable = true, 
 }) {
-  CardShoppingCart.propTypes = {
+  OrderCard.propTypes = {
     title: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
@@ -115,4 +115,4 @@ function CardShoppingCart({
   );
 }
 
-export { CardShoppingCart }
+export { OrderCard as CardShoppingCart }
