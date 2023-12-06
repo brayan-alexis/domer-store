@@ -1,16 +1,23 @@
-import React from 'react';
+import { Link } from "react-router-dom";
 import { useGlobalContext } from '../../context';
-import { CardShoppingCart } from '../../components/CardShoppingCart';
+import { OrderCard } from '../../components/OrderCard';
+import { FaChevronLeft } from "react-icons/fa";
 
 function MyOrder() {
   const { order } = useGlobalContext();
 
   return (
     <div className="flex flex-col items-center">
-      My Order
+      <div className="flex items-center justify-center relative w-80 mb-6">
+        <Link to="/my-orders" className="absolute left-0">
+          <FaChevronLeft className="w-6 h-6 cursor-pointer" />
+        </Link>
+        <h1>My Order</h1>
+      </div>
+      
       <div className="flex flex-col">
         {order?.slice(-1)[0]?.products?.map((product) => (
-          <CardShoppingCart key={product.id} {...product} editable={false} />
+          <OrderCard key={product.id} {...product} editable={false} />
         ))}
       </div>
 

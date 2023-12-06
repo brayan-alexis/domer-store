@@ -115,4 +115,4 @@ function OrderCard({
   );
 }
 
-export { OrderCard as CardShoppingCart }
+export { OrderCard }
