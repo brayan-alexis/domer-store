@@ -7,7 +7,7 @@ export const totalPrice = (products) => {
   return products.reduce(
     (total, product) => {
       const discountedPrice = (product.price * (1 - product.discountPercentage / 100)).toFixed(2);
-      return (total + discountedPrice * product.quantity).toFixed(2);
+      return total + discountedPrice * product.quantity;
     },
     0
   );

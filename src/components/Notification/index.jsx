@@ -11,7 +11,7 @@ function Notification() {
       }`}
     >
       <span className="text-xl text-black font-medium">Product added to cart!</span>
-      <BsCart2 classNameName="w-5 h-5 text-black ml-2" />
+      <BsCart2 className="w-5 h-5 text-black ml-2" />
     </div>
   );
 }
