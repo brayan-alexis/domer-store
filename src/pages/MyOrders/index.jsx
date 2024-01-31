@@ -13,10 +13,11 @@ function MyOrders() {
 
       <div className="flex flex-col">
         {order?.map((order, index) => (
-          <Link key={index} to={`/my-orders/${order.id}`}>
+          <Link key={index} to={`/my-orders/${index}`}>
             <OrdersCard 
               products={cartProducts}
               totalPrice={order.totalPrice}
+              articles={order.products.length}
               {...order}
             />
           </Link>

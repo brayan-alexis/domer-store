@@ -5,6 +5,8 @@ import { FaChevronLeft } from "react-icons/fa";
 
 function MyOrder() {
   const { order } = useGlobalContext();
+  const currentPath = window.location.pathname;
+  const orderId = currentPath.split("/").slice(-1)[0];
 
   return (
     <div className="flex flex-col items-center">
