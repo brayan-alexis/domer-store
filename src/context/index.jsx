@@ -40,7 +40,8 @@ export const GlobalContextProvider = ({ children }) => {
   const [showProduct, setShowProduct] = useState({});
   // Search - Search products by title
   const [searchByTitle, setSearchByTitle] = useState("");
-  console.log('searchByTitle:', searchByTitle);
+  // Products - Array of products filtered by title
+  const [filteredProducts, setFilteredProducts] = useState(null);
   // Shopping cart - Quantity of product added to cart
   const [cartProducts, setCartProducts] = useState([]);
   // Shopping cart - Notification when product is added to cart
@@ -52,6 +53,7 @@ export const GlobalContextProvider = ({ children }) => {
   // Product detail - Open/close product detail modal
   const [openModal, setOpenModal] = useState(false);
 
+  // Fetch products from API
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -64,6 +66,13 @@ export const GlobalContextProvider = ({ children }) => {
     };
     fetchProducts();
   }, []);
+
+  const filteredProductsByTitle = (products, searchByTitle) => {
+    return products?.filter(product => product.title.toLowerCase().includes(searchByTitle.toLowerCase()));
+  }
+  useEffect(() => {
+    if (searchByTitle) setFilteredProducts(filteredProductsByTitle(products, searchByTitle));
+  }, [products, searchByTitle]);
 
   const addToCart = (productData) => {
     // Check if product already exists in cart
@@ -128,6 +137,8 @@ export const GlobalContextProvider = ({ children }) => {
       setShowProduct,
       searchByTitle,
       setSearchByTitle,
+      filteredProducts,
+      setFilteredProducts,
       cartProducts,
       setCartProducts,
       cartCount,

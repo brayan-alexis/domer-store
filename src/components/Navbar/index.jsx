@@ -24,6 +24,12 @@ const Navbar = () => {
     { to: "/my-orders", text: "My orders 📦" },
   ];
 
+  const renderView = () => {
+    // if () {
+
+    // }
+  }
+
   return (
     <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-4 px-8 text-sm font-light bg-white shadow-md ">
       <ul className="flex items-center gap-3">
