@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import { dummyjsonURL } from "../api/index";
 import { BsStarFill } from "react-icons/bs";
 import { BsStarHalf } from "react-icons/bs";
 import { BsStar } from "react-icons/bs";
@@ -21,7 +22,6 @@ const starRating = (rating) => {
   }
   return stars;
 };
-
 const discountedPrice = (price, discountPercentage) => {
   let discount = price * (discountPercentage/100);
   return (price - discount).toFixed(2);
@@ -31,31 +31,39 @@ const productTotalPrice = (quantity, price, discountPercentage) => {
   return total.toFixed(2);
 };
 
-
 export const GlobalContextProvider = ({ children }) => {
   // Order -
   const [order, setOrder] = useState([]);
+  // Products - Array of products fetched from API
+  const [products, setProducts] = useState(null);
+  // Product detail - Show product detail
+  const [showProduct, setShowProduct] = useState({});
+  // Search - Search products by title
+  const [searchByTitle, setSearchByTitle] = useState("");
+  console.log('searchByTitle:', searchByTitle);
   // Shopping cart - Quantity of product added to cart
-  const [cartCount, setCartCount] = useState(0);
-  // Shopping cart - Array of products added to cart
   const [cartProducts, setCartProducts] = useState([]);
   // Shopping cart - Notification when product is added to cart
+  const [cartCount, setCartCount] = useState(0);
+  // Shopping cart - Array of products added to cart
   const [openNotification, setOpenNotification] = useState(false);
   // Shopping cart - Open/close shopping cart menu
   const [openCartMenu, setOpenCartMenu] = useState(false);
   // Product detail - Open/close product detail modal
   const [openModal, setOpenModal] = useState(false);
-  // Product detail - Show product detail
-  const [showProduct, setShowProduct] = useState({});
 
-  const showNotification = () => {
-    setOpenNotification(true);
-    setTimeout(() => {
-      setOpenNotification(false);
-    }, 3000);
-  }
-  const toggleCartMenu = () => setOpenCartMenu(!openCartMenu);
-  const toggleModal = () => setOpenModal(!openModal);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(`${dummyjsonURL}/products?limit=100`);
+        const data = await response.json();
+        setProducts(data.products);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+    fetchProducts();
+  }, []);
 
   const addToCart = (productData) => {
     // Check if product already exists in cart
@@ -74,6 +82,14 @@ export const GlobalContextProvider = ({ children }) => {
     setCartCount(cartCount + 1);
     showNotification();
   }
+  const toggleCartMenu = () => setOpenCartMenu(!openCartMenu);
+  const toggleModal = () => setOpenModal(!openModal);
+  const showNotification = () => {
+    setOpenNotification(true);
+    setTimeout(() => {
+      setOpenNotification(false);
+    }, 3000);
+  }
 
   const decrementQuantity = (productData) => {
     const productCart = cartProducts.find(p => p.id === productData.id);
@@ -86,14 +102,12 @@ export const GlobalContextProvider = ({ children }) => {
       handleDeleteProduct(productData.id, productData.quantity);
     }
   }
-  
   const incrementQuantity = (productData) => {
     const productCart = cartProducts.find(p => p.id === productData.id);
     console.log(productCart)
     productCart.quantity += 1;
     setCartCount(cartCount + 1);
   }
-
   const handleDeleteProduct = (id, quantity) => {
     const filteredProducts = cartProducts.filter((product) => product.id !== id);
     setCartProducts(filteredProducts);
@@ -102,26 +116,32 @@ export const GlobalContextProvider = ({ children }) => {
 
   return (
     <context.Provider value={{
+      starRating,
+      discountedPrice,
+      productTotalPrice,
+
       order,
       setOrder,
+      products,
+      setProducts,
+      showProduct,
+      setShowProduct,
+      searchByTitle,
+      setSearchByTitle,
       cartProducts,
       setCartProducts,
       cartCount,
       setCartCount,
-      addToCart,
-      starRating,
-      discountedPrice,
-      productTotalPrice,
-      handleDeleteProduct,
-      decrementQuantity,
-      incrementQuantity,
       openNotification,
       openCartMenu,
       openModal,
+
+      addToCart,
       toggleCartMenu,
       toggleModal,
-      showProduct,
-      setShowProduct
+      decrementQuantity,
+      incrementQuantity,
+      handleDeleteProduct
     }}>
       {children}
     </context.Provider>

@@ -1,9 +1,10 @@
 import { useGlobalContext } from "../../context";
 import { NavLink } from "react-router-dom";
+import { BsSearch } from "react-icons/bs";
 import { BsCart2 } from "react-icons/bs";
 
 const Navbar = () => {
-  const { cartCount, toggleCartMenu } = useGlobalContext();
+  const { cartCount, setSearchByTitle, toggleCartMenu } = useGlobalContext();
   const textDecoration = "text-green-600";
 
   let leftNavbar = [
@@ -24,7 +25,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-white">
+    <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-4 px-8 text-sm font-light bg-white shadow-md ">
       <ul className="flex items-center gap-3">
         {leftNavbar.map((item, index) => (
           <li key={item.text} className={item.className}>
@@ -39,6 +40,18 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
+      <div className="relative">
+        <input
+          type="text"
+          id="search"
+          placeholder="Search"
+          className="w-72 p-2 text-xs rounded border focus:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-600"
+          onChange={(e) => setSearchByTitle(e.target.value)}
+        />
+        <button className="absolute right-2 top-2 ">
+          <BsSearch className="w-4 h-4 hover:text-green-600" />
+        </button>
+      </div>
       <ul className="flex items-center gap-3">
         {rightNavbar.map((item) => (
           <li key={item.text}>
