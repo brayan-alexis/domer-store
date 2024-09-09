@@ -39,7 +39,7 @@ export const GlobalContextProvider = ({ children }) => {
   // Product detail - Show product detail
   const [showProduct, setShowProduct] = useState({});
   // Search - Search products by title
-  const [searchByTitle, setSearchByTitle] = useState("");
+  const [searchProduct, setSearchProduct] = useState("");
   // Products - Array of products filtered by title
   const [filteredProducts, setFilteredProducts] = useState(null);
   // Shopping cart - Quantity of product added to cart
@@ -67,12 +67,18 @@ export const GlobalContextProvider = ({ children }) => {
     fetchProducts();
   }, []);
 
-  const filteredProductsByTitle = (products, searchByTitle) => {
-    return products?.filter(product => product.title.toLowerCase().includes(searchByTitle.toLowerCase()));
-  }
+  // Filter products by title, description, and category
+  const filterBySearch = (products, searchProduct) => {
+    if (!searchProduct) return products; // If search is empty, return all products
+    return products?.filter(product => 
+      product.title.toLowerCase().includes(searchProduct.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchProduct.toLowerCase()) ||
+      product.category.toLowerCase().includes(searchProduct.toLowerCase())
+    );
+  };
   useEffect(() => {
-    if (searchByTitle) setFilteredProducts(filteredProductsByTitle(products, searchByTitle));
-  }, [products, searchByTitle]);
+    if (products) setFilteredProducts(filterBySearch(products, searchProduct));
+  }, [products, searchProduct]);
 
   const addToCart = (productData) => {
     // Check if product already exists in cart
@@ -135,8 +141,8 @@ export const GlobalContextProvider = ({ children }) => {
       setProducts,
       showProduct,
       setShowProduct,
-      searchByTitle,
-      setSearchByTitle,
+      searchProduct,
+      setSearchProduct,
       filteredProducts,
       setFilteredProducts,
       cartProducts,

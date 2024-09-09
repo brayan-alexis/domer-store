@@ -4,17 +4,17 @@ import { BsSearch } from "react-icons/bs";
 import { BsCart2 } from "react-icons/bs";
 
 const Navbar = () => {
-  const { cartCount, setSearchByTitle, toggleCartMenu } = useGlobalContext();
+  const { cartCount, setSearchProduct, toggleCartMenu } = useGlobalContext();
   const textDecoration = "text-green-600";
 
   let leftNavbar = [
-    { to: "/", text: "Home", className: "font-semibold text-lg" },
+    { to: "/", text: "DOMER STORE", className: "font-semibold text-lg" },
     { to: "/", text: "All" },
-    { to: "/t-shirts", text: "T-shirts" },
-    { to: "/hoodies", text: "Hoodies" },
-    { to: "/jeans", text: "jeans" },
-    { to: "/footwear", text: "footwear" },
-    { to: "/accessories", text: "accessories" },
+    { to: "/beauty", text: "Beauty" },
+    { to: "/electronics", text: "Electronics" },
+    { to: "/fashion", text: "Fashion" },
+    { to: "/home-decoration", text: "Home & Decoration" },
+    { to: "/sports-vehicles", text: "Sports & Vehicles" },
   ];
 
   let rightNavbar = [
@@ -26,7 +26,7 @@ const Navbar = () => {
 
   return (
     <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-4 px-8 text-sm font-light bg-white shadow-md ">
-      <ul className="flex items-center gap-3">
+      <ul className="flex items-center gap-4">
         {leftNavbar.map((item, index) => (
           <li key={item.text} className={item.className}>
             <NavLink
@@ -46,13 +46,13 @@ const Navbar = () => {
           id="search"
           placeholder="Search"
           className="w-72 p-2 text-xs rounded border focus:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-600"
-          onChange={(e) => setSearchByTitle(e.target.value)}
+          onChange={(e) => setSearchProduct(e.target.value)}
         />
         <button className="absolute right-2 top-2 ">
           <BsSearch className="w-4 h-4 hover:text-green-600" />
         </button>
       </div>
-      <ul className="flex items-center gap-3">
+      <ul className="flex items-center gap-4">
         {rightNavbar.map((item) => (
           <li key={item.text}>
             {item.to !== "" ? (

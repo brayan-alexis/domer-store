@@ -4,11 +4,15 @@ import { ProductDetail } from "../../components/ProductDetail";
 import { ProductModal } from "../../components/ProductModal";
 
 const Home = () => {
-  const { products, searchByTitle, filteredProducts, openModal } = useGlobalContext();
+  const { products, searchProduct, filteredProducts, openModal } = useGlobalContext();
 
   const renderView = () => {
-    const productsToRender = searchByTitle?.length > 0 ? filteredProducts : products;
-    
+    // Check if products are not yet loaded
+    if (!products) {
+      return <p className="text-center text-2xl font-semibold col-span-full">Loading products...</p>;
+    }
+
+    const productsToRender = searchProduct?.length > 0 ? filteredProducts : products;
     return (productsToRender?.length > 0)
       ? productsToRender.map(product => <Card key={product.id} {...product} />)
       : <p className="text-center text-2xl font-semibold col-span-full">No products found</p>;
