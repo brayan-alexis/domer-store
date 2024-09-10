@@ -10,11 +10,11 @@ const Navbar = () => {
   let leftNavbar = [
     { to: "/", text: "DOMER STORE", className: "font-semibold text-lg" },
     { to: "/", text: "All" },
-    { to: "/beauty", text: "Beauty" },
-    { to: "/electronics", text: "Electronics" },
-    { to: "/fashion", text: "Fashion" },
-    { to: "/home-decoration", text: "Home & Decoration" },
-    { to: "/sports-vehicles", text: "Sports & Vehicles" },
+    { to: "/category/beauty", text: "Beauty" },
+    { to: "/category/electronics", text: "Electronics" },
+    { to: "/category/fashion", text: "Fashion" },
+    { to: "/category/home-decoration", text: "Home & Decoration" },
+    { to: "/category/sports-vehicles", text: "Sports & Vehicles" },
   ];
 
   let rightNavbar = [
