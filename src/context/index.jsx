@@ -65,6 +65,10 @@ export const GlobalContextProvider = ({ children }) => {
     fetchProducts();
   }, []);
 
+  const clearSearchProduct = () => {
+    setSearchProduct('');
+  };
+
   const addToCart = (productData) => {
     // Check if product already exists in cart
     const productExists = cartProducts.some(p => p.id === productData.id);
@@ -136,6 +140,7 @@ export const GlobalContextProvider = ({ children }) => {
       openCartMenu,
       openModal,
 
+      clearSearchProduct,
       addToCart,
       toggleCartMenu,
       toggleModal,
