@@ -6,15 +6,15 @@ import { ProductModal } from "../../components/ProductModal";
 
 // List of subcategories for each category
 const categoriesMap = {
-  beauty: ["beauty", "fragrances", "skin Care"],
+  beauty: ["beauty", "fragrances", "skin-care"],
   electronics: ["laptops", "mobile-accessories", "smartphones", "tablets"],
   fashion: [
     "mens-shirts", "mens-watches", "sunglasses", "tops", 
     "womens-bags", "womens-dresses", "womens-jewellery", 
     "womens-shoes", "womens-watches"
   ],
-  "home-decoration": ["furniture", "home-decoration", "kitchen-accessories"],
-  "sports-vehicles": ["motorcycle", "sports-accessories", "vehicle", "groceries"]
+  "home-decoration": ["furniture", "home-decoration", "kitchen-accessories", "groceries"],
+  "sports-vehicles": ["motorcycle", "sports-accessories", "vehicle"]
 };
 
 const Home = () => {
