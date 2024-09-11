@@ -40,8 +40,6 @@ export const GlobalContextProvider = ({ children }) => {
   const [showProduct, setShowProduct] = useState({});
   // Search - Search products by title
   const [searchProduct, setSearchProduct] = useState("");
-  // // Products - Array of products filtered by title, description and category
-  // const [filteredProducts, setFilteredProducts] = useState(null);
   // Shopping cart - Quantity of product added to cart
   const [cartProducts, setCartProducts] = useState([]);
   // Shopping cart - Notification when product is added to cart
@@ -66,19 +64,6 @@ export const GlobalContextProvider = ({ children }) => {
     };
     fetchProducts();
   }, []);
-
-  // // Filter products by title, description, and category
-  // const filterBySearch = (products, searchProduct) => {
-  //   if (!searchProduct) return products; // If search is empty, return all products
-  //   return products?.filter(product => 
-  //     product.title.toLowerCase().includes(searchProduct.toLowerCase()) ||
-  //     product.description.toLowerCase().includes(searchProduct.toLowerCase()) ||
-  //     product.category.toLowerCase().includes(searchProduct.toLowerCase())
-  //   );
-  // };
-  // useEffect(() => {
-  //   if (products) setFilteredProducts(filterBySearch(products, searchProduct));
-  // }, [products, searchProduct]);
 
   const addToCart = (productData) => {
     // Check if product already exists in cart
@@ -143,8 +128,6 @@ export const GlobalContextProvider = ({ children }) => {
       setShowProduct,
       searchProduct,
       setSearchProduct,
-      // filteredProducts,
-      // setFilteredProducts,
       cartProducts,
       setCartProducts,
       cartCount,

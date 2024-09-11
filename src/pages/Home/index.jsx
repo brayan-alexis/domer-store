@@ -19,7 +19,7 @@ const categoriesMap = {
 
 const Home = () => {
   const { category } = useParams(); // Obtain the category from the URL
-  const { products, searchProduct, filteredProducts, openModal } = useGlobalContext();
+  const { products, searchProduct, openModal } = useGlobalContext();
 
   // Filter products by category and subcategory
   const filterProductsByCategory = (products) => {
@@ -49,7 +49,6 @@ const Home = () => {
 
     // Filter products by search then by category
     const productsByCategory = filterProductsByCategory(products);
-    // const productsToRender = searchProduct?.length > 0 ? filteredProducts : productsByCategory;
     const productsToRender = searchProduct?.length > 0
       ? filterProductsBySearch(productsByCategory)
       : productsByCategory;
