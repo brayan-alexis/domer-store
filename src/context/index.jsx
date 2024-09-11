@@ -40,6 +40,8 @@ export const GlobalContextProvider = ({ children }) => {
   const [showProduct, setShowProduct] = useState({});
   // Search - Search products by title
   const [searchProduct, setSearchProduct] = useState("");
+  // Search - Input value for search
+  const [searchInputValue, setSearchInputValue] = useState('');
   // Shopping cart - Quantity of product added to cart
   const [cartProducts, setCartProducts] = useState([]);
   // Shopping cart - Notification when product is added to cart
@@ -65,7 +67,15 @@ export const GlobalContextProvider = ({ children }) => {
     fetchProducts();
   }, []);
 
-  const clearSearchProduct = () => {
+  // Handle search input change
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setSearchInputValue(value);
+    setSearchProduct(value);
+  };
+  // Handle clear search input
+  const handleClearSearch = () => {
+    setSearchInputValue('');
     setSearchProduct('');
   };
 
@@ -132,6 +142,8 @@ export const GlobalContextProvider = ({ children }) => {
       setShowProduct,
       searchProduct,
       setSearchProduct,
+      searchInputValue,
+      setSearchInputValue,
       cartProducts,
       setCartProducts,
       cartCount,
@@ -140,7 +152,8 @@ export const GlobalContextProvider = ({ children }) => {
       openCartMenu,
       openModal,
 
-      clearSearchProduct,
+      handleInputChange,
+      handleClearSearch,
       addToCart,
       toggleCartMenu,
       toggleModal,

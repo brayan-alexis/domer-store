@@ -4,7 +4,7 @@ import { BsSearch } from "react-icons/bs";
 import { BsCart2 } from "react-icons/bs";
 
 const Navbar = () => {
-  const { cartCount, setSearchProduct, clearSearchProduct, toggleCartMenu } = useGlobalContext();
+  const { cartCount, handleInputChange, handleClearSearch, searchInputValue, toggleCartMenu } = useGlobalContext();
   const textDecoration = "text-green-600";
 
   let leftNavbar = [
@@ -16,7 +16,6 @@ const Navbar = () => {
     { to: "/category/home-decoration", text: "Home & Decoration" },
     { to: "/category/sports-vehicles", text: "Sports & Vehicles" },
   ];
-
   let rightNavbar = [
     { to: "/my-account", text: "My account 👤" },
     { to: "/sign-in", text: "Sign In" },
@@ -42,9 +41,10 @@ const Navbar = () => {
         <input
           type="text"
           id="search"
+          value={searchInputValue}
           placeholder="Search"
           className="w-72 p-2 text-xs rounded border focus:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-600"
-          onChange={(e) => setSearchProduct(e.target.value)}
+          onChange={handleInputChange}
         />
         <button className="absolute right-2 top-2 ">
           <BsSearch className="w-4 h-4 hover:text-green-600" />
@@ -57,7 +57,7 @@ const Navbar = () => {
               <NavLink
                 to={item.to}
                 className={({ isActive }) => (isActive ? textDecoration : undefined)}
-                onClick={clearSearchProduct}
+                onClick={handleClearSearch}
               >
                 {item.text}
               </NavLink>

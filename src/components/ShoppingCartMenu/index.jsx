@@ -5,7 +5,7 @@ import { totalPrice } from "../../utils";
 import { IoClose } from "react-icons/io5";
 
 function ShoppingCartMenu() {
-  const { order, setOrder, cartProducts, setCartProducts, setCartCount, toggleCartMenu, openCartMenu, clearSearchProduct } = useGlobalContext();
+  const { order, setOrder, cartProducts, setCartProducts, setCartCount, toggleCartMenu, openCartMenu, handleClearSearch } = useGlobalContext();
   
   const handleCheckout = () => {
     const orderToAdd = {
@@ -18,7 +18,7 @@ function ShoppingCartMenu() {
     setOrder([...order, orderToAdd]);
     setCartProducts([]);
     setCartCount(0);
-    clearSearchProduct();
+    handleClearSearch();
     toggleCartMenu();
   }
 
