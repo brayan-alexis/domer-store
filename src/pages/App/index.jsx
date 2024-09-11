@@ -10,7 +10,6 @@ import { Navbar } from "../../components/Navbar";
 import { Layout } from "../../components/Layout";
 import { Notification } from "../../components/Notification";
 import { ShoppingCartMenu } from "../../components/ShoppingCartMenu";
-import "./App.css";
 
 const AppRoutes = () =>
   useRoutes([

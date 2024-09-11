@@ -8,7 +8,7 @@ export const ProductDetail = () => {
   const onCancel = () => toggleModal();
 
   return (
-    <div className='flex flex-row fixed bg-white rounded-lg w-[988px] h-[calc(100vh-140px)] max-h-[70vh] p-10 overflow-hidden shadow-lg'>
+    <div className='flex flex-row fixed bg-white rounded-lg w-[1200px] max-w-[90vw] h-[calc(100vh-100px)] max-h-[80vh] p-10 overflow-hidden shadow-lg'>
       <div 
         className='absolute top-0 right-0 flex justify-center items-center hover:bg-gray-200 rounded-full m-4 p-1 font-bold cursor-pointer'
         onClick={onCancel}
@@ -43,7 +43,7 @@ export const ProductDetail = () => {
       </figure> 
 
       <div className='p-5 w-2/5'>
-        <p className='text-2xl font-bold'>
+        <p className='text-2xl font-semibold'>
           {showProduct.title}
         </p>
         <div className="flex items-center mt-1">
@@ -53,10 +53,10 @@ export const ProductDetail = () => {
           </span>
         </div>
         <div className="price-container flex items-baseline mt-3">
-          <span className="text-2xl font-medium mr-2">
+          <span className="text-3xl font-bold mr-2">
             ${discountedPrice(showProduct.price, showProduct.discountPercentage)}
           </span>
-          <span className="text-lg font-light line-through text-gray-400 mr-2">
+          <span className="text-sm font-light line-through text-gray-400 mr-2">
             ${showProduct.price}
           </span>
           <span className="text-lg font-semibold text-red-500">
@@ -64,7 +64,7 @@ export const ProductDetail = () => {
           </span>
         </div>
         
-        <p className='mt-3 text-base font-semibold'>
+        <p className='mt-3 text-base font-normal'>
           About this item:
         </p>
         <p className='text-base font-light'>
